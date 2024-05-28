@@ -1,0 +1,50 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = "postgres://avnadmin:AVNS_prWDPUMWtzDZwKbJGco@abhaysinh-personal-finance-manangment.h.aivencloud.com:28649/defaultdb?sslmode=require"
+}
+
+model User {
+  id        Int       @id @default(autoincrement())
+  email     String    @unique
+  password  String
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+  Transactions Transaction[]
+  Budgets    Budget[]
+}
+
+model Transaction {
+  id        Int       @id @default(autoincrement())
+  amount    Float
+  type      TransactionType @default(expense)    // 'income' or 'expense'
+  date      DateTime  @default(now())
+  category  Category  @relation(fields: [categoryId], references: [id])
+  categoryId Int
+  user      User      @relation(fields: [userId], references: [id])
+  userId    Int
+}
+
+model Category {
+  id          Int             @id @default(autoincrement())
+  name        String
+  Transactions Transaction[]
+}
+
+model Budget {
+  id        Int       @id @default(autoincrement())
+  amount    Float
+  month     String
+  year      Int
+  user      User      @relation(fields: [userId], references: [id])
+  userId    Int
+}
+
+
+enum TransactionType {
+  income
+  expense
+}
