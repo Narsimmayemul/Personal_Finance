@@ -20,7 +20,7 @@ app.use("/", budgetRouter);
 app.use("/report", reportRouter);
 
 app.get("/", (req, res) => {
-  res.send({ msg: "Welcome to Personal Finance Management App" });
+  res.send({ msg: "Personal Finance Management" });
 });
 
 app.listen(PORT || 3000, () => {
