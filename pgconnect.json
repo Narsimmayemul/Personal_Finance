@@ -3,8 +3,8 @@
         "1": {
             "Name": "CONNECTION_NAME",
             "Group": "GROUP_TEST",
-            "Host": "abhaysinh-personal-finance-manangment.h.aivencloud.com",
-            "Port": 28649,
+            "Host": "pg-3c56a2a6-narsimmayemul49450-303b.d.aivencloud.com",
+            "Port": 16242,
             "MaintenanceDB": "defaultdb",
             "Username": "avnadmin",
             "SSLMode": "require"
